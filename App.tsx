@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -5,7 +6,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -15,7 +16,11 @@ import {
   Text,
   useColorScheme,
   View,
+  Dimensions,
+  TextInput,
+  Button,
 } from 'react-native';
+import {WebView} from 'react-native-webview';
 
 import {
   Colors,
@@ -54,8 +59,38 @@ function Section({children, title}: SectionProps): React.JSX.Element {
     </View>
   );
 }
-
+const MyWebView = (props: any) => {
+  const screenHeight = Dimensions.get('window').height;
+  console.log(
+    '%c App_MyWebView',
+    'color:red;font-family:system-ui;font-size:2rem;font-weight:bold',
+    'props',
+    props,
+  );
+  return (
+    <WebView
+      source={{
+        uri: props.url,
+      }}
+      style={{height: screenHeight}}
+      mediaPlaybackRequiresUserAction={true}
+      // iOS specific props
+      allowsInlineMediaPlayback={true}
+      mediaPlaybackRequiresUserGesture={true}
+      onError={syntheticEvent => {
+        const {nativeEvent} = syntheticEvent;
+        console.warn('WebView error: ', nativeEvent);
+      }}
+      onLoad={() => console.log('WebView loaded')}
+    />
+  );
+};
 function App(): React.JSX.Element {
+  const [url, setUrl] = useState('https://reactnative.dev/');
+  const [inputUrl, setInputUrl] = useState('');
+  const loadWebView = () => {
+    setUrl(inputUrl);
+  };
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -64,13 +99,23 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
+      <TextInput
+        style={{height: 40, margin: 12, borderWidth: 1, padding: 10}}
+        onChangeText={setInputUrl}
+        value={inputUrl}
+        placeholder="import Url"
+      />
+      <Button title="confirm" onPress={loadWebView} />
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
+        <MyWebView url={url} />
+        {/*
         <Header />
         <View
           style={{
@@ -90,7 +135,7 @@ function App(): React.JSX.Element {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );
