@@ -1,3 +1,11 @@
+# *************Error Handling Manual***************
+- error pod install fail raceback (most recent call last):
+gem cleanup
+gem install cocoapods
+
+
+
+
 *************專案init流程***************
 ----------ruby 2.6.10----------
 ---------- cocoapods -v 1.12.0 ----------
@@ -170,3 +178,5 @@ sudo kill -9 <PID>
 3.Uat(簡中)
 4.Uat05(多語)
 verification code 009527 009572
+
+
