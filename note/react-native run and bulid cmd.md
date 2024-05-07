@@ -1,8 +1,17 @@
 # *************Error Handling Manual***************
-- error pod install fail raceback (most recent call last):
+
+- error npm registry https://registry.npmjs.org/:
+
+npm config get registry
+npm set registry https://registry.npmjs.org/
+npm set registry https://npm.pkg.github.com/
+npm set registry https://nexus.servnimo.com/repository/npm-public
+
+
+- error pod install fail:
 gem cleanup
 gem install cocoapods
-
+pod install --verbose --no-repo-update //查看下載進度
 
 
 
