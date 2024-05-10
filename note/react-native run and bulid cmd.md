@@ -42,7 +42,6 @@ npx react-native run-ios --simulator "iPhone SE (3rd generation)"
 yarn react-native run-ios --simulator "iPhone SE (3rd generation)"  
 
 
-
 npx react-native start --reset-cache
 npx react-native start --port 8081
 npx react-native run-ios
@@ -105,8 +104,6 @@ Remove all packages not in [dependencies] or [devDependencies]
 *simulator:
 npx react-native@0.67.5 init AwesomeProject --version 0.67.5
 npx react-native@0.67.5 init test2 --version 0.67.5
-npx react-native@0.67.5 init win11 --version 0.67.5
-npx react-native@0.67.5 init macTest --version 0.67.5
 npx react-native@latest init Project4
 react-devtools
 
