@@ -26,9 +26,7 @@ cd ios
 pod install
 =>npx react-native run-ios --verbose     
 *******************************react-native run and bulid cmd******************************
-`yarn react-native run-ios --device`. The `--device` flag is used to specify that the app should be run on a real device instead of a simulator. If you have multiple iOS devices connected, you may need to specify the device name, like `--device "iPhone's Name"
 set RCT_METRO_PORT=7777
-set RCT_METRO_PORT=8082
 # android
 npx react-native run-android --mode=smh_sitdebug
 npx react-native run-android --variant=smh_sitdebug
@@ -39,11 +37,12 @@ npx react-native run-android --port=8084 --deviceId 5554
 npx react-native run-android --deviceId emulator-5556 --port=7777
 # ios
 npx react-native run-ios --simulator="iPhone 11"
-npx react-native run-ios --simulator "iPhone SE (3rd generation)"  
 yarn react-native run-ios --simulator "iPhone SE (3rd generation)"  
 npx react-native run-ios
 npx react-native run-ios --verbose
 npx react-native run-ios --simulator="iPhone 11"  --port="8080"
+`yarn react-native run-ios --device`. The `--device` flag is used to specify that the app should be run on a real device instead of a simulator. If you have multiple iOS devices connected, you may need to specify the device name, like `--device "iPhone's Name"
+
 # common
 npx react-native start --reset-cache
 npx react-native start --port 8081
